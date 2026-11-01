@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Healthcare Analytics</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+        }
+
+        header {
+            background: #30333e;
+            color: white;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px;
+            background: white;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #e5e7eb;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button.active {
+            background: #44a83e;
+            color: white;
+        }
+
+        .viewer {
+            width: 96%;
+            margin: 15px auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 850px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Healthcare Analytics</h1>
+        <p>Interactive Healthcare Dashboard and Story Analysis</p>
+    </header>
+
+    <div class="tabs">
+        <button class="active" onclick="showView('dashboard', this)">
+            Dashboard
+        </button>
+
+        <button onclick="showView('story1', this)">Story 1</button>
+        <button onclick="showView('story2', this)">Story 2</button>
+        <button onclick="showView('story3', this)">Story 3</button>
+        <button onclick="showView('story4', this)">Story 4</button>
+        <button onclick="showView('story5', this)">Story 5</button>
+    </div>
+
+    <div class="viewer">
+        <iframe id="tableauView"
+            src="https://public.tableau.com/views/Book1_17935097094890/SmartHealthcareAnalyticsDashboard?:showVizHome=no">
+        </iframe>
+    </div>
+
+    <script>
+
+        const views = {
+            dashboard: "https://public.tableau.com/views/Book1_17935097094890/SmartHealthcareAnalyticsDashboard?:showVizHome=no",
+
+            story1: "https://public.tableau.com/views/Book1_17935097094890/Story1?:showVizHome=no",
+
+            story2: "https://public.tableau.com/views/Book1_17935097094890/Story2?:showVizHome=no",
+
+            story3: "https://public.tableau.com/views/Book1_17935097094890/Story3?:showVizHome=no",
+
+            story4: "https://public.tableau.com/views/Book1_17935097094890/Story4?:showVizHome=no",
+
+            story5: "https://public.tableau.com/views/Book1_17935097094890/Story5?:showVizHome=no"
+        };
+
+        function showView(name, button) {
+            document.getElementById("tableauView").src = views[name];
+
+            document.querySelectorAll(".tabs button").forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+        }
+    </script>
+
+</body>
+
+</html>
